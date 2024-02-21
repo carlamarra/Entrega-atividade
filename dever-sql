@@ -1,0 +1,105 @@
+import sqlite3
+
+conexao = sqlite3.connect('sql')
+cursor = conexao.cursor()
+
+#cursor.execute('CREATE TABLE alunos( id INT, nome VARCHAR(100), idade INT, curso VARCHAR(100));')  
+ 
+#cursor.execute('INSERT INTO alunos( id, nome, idade, curso) VALUES(1, "Isadora", 23,"Medicina")')
+#cursor.execute('INSERT INTO alunos( id, nome, idade, curso) VALUES(2, "Paula", 20,"Administração")')
+#cursor.execute('INSERT INTO alunos( id, nome, idade, curso) VALUES(3, "Pedro", 30,"Computação")')
+#cursor.execute('INSERT INTO alunos( id, nome, idade, curso) VALUES(4, "Sabrina", 19,"Farmácia")')
+#cursor.execute('INSERT INTO alunos( id, nome, idade, curso) VALUES(5, "Poliana", 23,"Engenharia")')
+
+#A)
+#registros = cursor.execute(' SELECT * FROM alunos') 
+#for alunos in registros:
+    #print(alunos)
+    
+#B)
+#registros = cursor.execute(' SELECT nome FROM alunos WHERE idade>20') 
+#for alunos in registros:
+    #print(alunos)
+    
+ 
+#C)
+#registros = cursor.execute('SELECT nome,curso FROM alunos GROUP BY nome ,curso HAVING curso="Engenharia"')
+#for alunos in registros:
+    #print(alunos)
+     
+        
+#D)
+#registros = cursor.execute('SELECT COUNT(id) FROM alunos')
+#for alunos in registros:
+    #print(alunos)
+            
+#Atualização e Remoção:
+                                   
+#A)                     
+#registros = cursor.execute('UPDATE alunos SET idade= "22" WHERE nome="Paula"')
+#for alunos in registros:
+    #print(alunos)
+                 
+#B)        
+#registros = cursor.execute('DELETE FROM alunos WHERE id=1')
+#for alunos in registros:
+    #print(alunos)
+    
+#5)
+#Criando Tabela Clientes
+
+#cursor.execute('CREATE TABLE clientes( id INT, nome VARCHAR(100), idade INT, saldo FLOAT)')
+
+#cursor.execute('INSERT INTO clientes( id, nome, idade, saldo) VALUES (1, "Maria", 40,"2500")')
+#cursor.execute('INSERT INTO clientes( id, nome, idade, saldo) VALUES (2, "Carla", 28,"3000")')
+#cursor.execute('INSERT INTO clientes( id, nome, idade, saldo) VALUES (3, "Ana", 30,"4500")')
+#cursor.execute('INSERT INTO clientes( id, nome, idade, saldo) VALUES (4, "Lara", 19,"2580")')
+#cursor.execute('INSERT INTO clientes( id, nome, idade, saldo) VALUES (5, "Joana", 32,"1800")')
+
+
+#A)
+#registros = cursor.execute('SELECT nome,idade FROM clientes GROUP BY nome,idade HAVING idade>30')
+#for clientes in registros:
+    #print (clientes)
+    
+#B) 
+#registros = cursor.execute('SELECT AVG(saldo) FROM clientes')
+#for clientes in registros:
+    #print(clientes)
+    
+#C)
+#registros = cursor.execute('SELECT nome, MAX(saldo) FROM clientes')
+#for clientes in registros:
+    #print(clientes)
+
+#D)
+#registros = cursor.execute('SELECT nome, saldo FROM clientes GROUP BY nome, saldo HAVING saldo>1000')
+#for clientes in registros:
+    #print(clientes)
+    
+#Atualização e Remoção (Clientes)
+    
+#A)
+#registros = cursor.execute('UPDATE clientes SET saldo=500 WHERE nome="Lara"')
+#for clientes in registros:
+    #print(clientes)
+    
+#B)
+#registros = cursor.execute('DELETE FROM clientes WHERE id=2')
+#for clientes in registros:
+    #print(clientes)
+    
+#cursor.execute('CREATE TABLE compras(id INT, clientes_id INT, produtos VARCHAR(100), valor FLOAT)')
+
+#cursor.execute('INSERT INTO compras(id, clientes_id, produtos, valor) VALUES (10, 1, "blusa", 50)')
+#cursor.execute('INSERT INTO compras(id, clientes_id, produtos, valor) VALUES (20, 2, "vestido", 100)')
+#cursor.execute('INSERT INTO compras(id, clientes_id, produtos, valor) VALUES (30, 3, "calça", 250)')
+#cursor.execute('INSERT INTO compras(id, clientes_id, produtos, valor) VALUES (40, 4, "bermuda", 150)')
+#cursor.execute('INSERT INTO compras(id, clientes_id, produtos, valor) VALUES (50, 5, "short", 200)')
+
+#registros = cursor.execute('SELECT nome, produto, valor FROM compras INNER JOIN clientes ON compras.clientes_id = clientes.id')
+#for compras in registros:
+    #print(compras)
+   
+conexao.commit()
+conexao.close()
